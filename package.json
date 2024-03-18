@@ -1,0 +1,36 @@
+{
+  "name": "react-wave-form",
+  "version": "1.0.0",
+  "description": "react audio waveform library like soundcloud",
+  "main": "index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "rollup": "rollup -c --bundleConfigAsCjs"
+  },
+  "keywords": [
+    "wave-form",
+    "react-wave-form",
+    "audio-visualize",
+    "soundcloud"
+  ],
+  "author": {
+    "name": "brgndyy",
+    "url": "https://github.com/brgndyy"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@rollup/plugin-url": "^8.0.2",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.18",
+    "react": "^18.2.0",
+    "rollup": "^4.13.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.2"
+  }
+}
