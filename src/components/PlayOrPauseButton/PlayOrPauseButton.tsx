@@ -3,14 +3,13 @@ import { useAudio } from "../Provider/AudioWaveFormWrapper";
 import initializeWaveForm from "../../utils/initializeWaveForm";
 
 type PlayOrPauseButtonProps = {
-  src: string;
-  // selectSongHandler: (currentMusicSrc: string) => void;
+  audioFileSrc: string;
   className?: string;
   playOrPauseValues?: [string, string] | [React.ReactNode, React.ReactNode];
 };
 
 export default function PlayOrPauseButton({
-  src,
+  audioFileSrc,
   className,
   playOrPauseValues,
 }: PlayOrPauseButtonProps) {
@@ -29,8 +28,11 @@ export default function PlayOrPauseButton({
   };
 
   return (
-    <button onClick={() => selectSongHandler(src)} className={buttonClassName}>
-      {isPlaying && src === currentSrc
+    <button
+      onClick={() => selectSongHandler(audioFileSrc)}
+      className={buttonClassName}
+    >
+      {isPlaying && audioFileSrc === currentSrc
         ? buttonStateValues[1]
         : buttonStateValues[0]}
     </button>
