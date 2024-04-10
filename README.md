@@ -59,6 +59,10 @@ function App() {
                 barVariability={0.5}
                 waveFormClassName={waveFormClass}
                 audioFileSrc={music.src}
+                backgroundTopColor={"red"}
+                backgroundBottomColor={"yellow"}
+                barTopColor={"black"}
+                barBottomColor={"gray"}
               />
             </div>
           );
@@ -73,16 +77,20 @@ export default App;
 
 ## AudioWaveForm Component Props
 
-| Name              | Datatype | Default | Description                                                                |
-| ----------------- | -------- | ------- | -------------------------------------------------------------------------- |
-| audioFileSrc      | string   | ""      | URL of the music file you want to convert to WaveForm                      |
-| waveFormClassName | string   | ""      | className you want to apply that canvas component.                         |
-| waveFormWidth     | number   | 500     | The basic width of the canvas you want to convert. default minimum is 500  |
-| waveFromHeight    | number   | 200     | The basic height of the canvas you want to convert. default minimum is 200 |
-| barWidth          | number   | 3       | Area of ​​the waveform bar you want to convert. default minimum is 3       |
-| barGap            | number   | 3       | gap between waveform bars. default minimum is 3                            |
-| baseBarHeight     | number   | 0.2     | Bar height of basic waveform. default minimum is 0.2                       |
-| barVariability    | number   | 0.6     | Change in height between waveform bars. default minimum is 0.6             |
+| Name                  | Datatype | Default                  | Description                                                                |
+| --------------------- | -------- | ------------------------ | -------------------------------------------------------------------------- |
+| audioFileSrc          | string   | ""                       | URL of the music file you want to convert to WaveForm                      |
+| waveFormClassName     | string   | ""                       | className you want to apply that canvas component.                         |
+| waveFormWidth         | number   | 500                      | The basic width of the canvas you want to convert. default minimum is 500  |
+| waveFromHeight        | number   | 200                      | The basic height of the canvas you want to convert. default minimum is 200 |
+| barWidth              | number   | 3                        | Area of ​​the waveform bar you want to convert. default minimum is 3       |
+| barGap                | number   | 3                        | gap between waveform bars. default minimum is 3                            |
+| baseBarHeight         | number   | 0.2                      | Bar height of basic waveform. default minimum is 0.2                       |
+| barVariability        | number   | 0.6                      | Change in height between waveform bars. default minimum is 0.6             |
+| backgroundTopColor    | string   | "rgb(92, 92, 92)"        | Top of the default background color that has not been played yet           |
+| backgroundBottomColor | string   | "rgba(0, 128, 255, 0.7)" | The part below the default background color that has not yet been played.  |
+| barTopColor           | string   | "rgb(0, 128, 255)"       | The color of the top part when the song is played                          |
+| barBottomColor        | string   | "rgba(92, 92, 92, 0.7)"  | The color of the bottom part when the song is played                       |
 
 ## PlayOrPause Button Component Props
 
@@ -101,3 +109,5 @@ export default App;
 - brgndyy [github](https://github.com/brgndyy)
 
 ## License
+
+MIT
