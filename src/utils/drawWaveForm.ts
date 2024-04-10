@@ -10,7 +10,6 @@ const drawWaveForm = (
   currentTimePercent: number // 현재 재생 위치의 퍼센트
 ) => {
   if (waveform && canvasCtx) {
-    console.log("그리기");
     canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
 
     let x = 0;
