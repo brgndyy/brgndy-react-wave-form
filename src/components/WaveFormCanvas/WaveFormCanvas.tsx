@@ -18,17 +18,15 @@ export default function WaveFormCanvas({
   height,
 }: WaveformCanvasPropsType) {
   return (
-    <>
-      <canvas
-        style={{
-          cursor: "pointer",
-        }}
-        ref={canvasRef}
-        width={width}
-        height={height}
-        className={className}
-        onClick={clickCanvasProgressBarHandler}
-      ></canvas>
-    </>
+    <canvas
+      style={{
+        cursor: "pointer",
+      }}
+      ref={canvasRef}
+      width={width}
+      height={height}
+      className={className}
+      onClick={clickCanvasProgressBarHandler}
+    ></canvas>
   );
 }

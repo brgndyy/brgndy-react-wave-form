@@ -5,6 +5,9 @@ import React, {
   useState,
   useRef,
   useEffect,
+  Dispatch,
+  SetStateAction,
+  useMemo,
 } from "react";
 
 interface AudioContextType {
@@ -13,6 +16,8 @@ interface AudioContextType {
   currentSrc: string;
   audioFile: HTMLAudioElement | null;
   prevSrc: string;
+  setWaveform: Dispatch<SetStateAction<Float32Array | null>>;
+  waveform: Float32Array | null;
 }
 
 const AudioContext = createContext<AudioContextType>({
@@ -21,6 +26,8 @@ const AudioContext = createContext<AudioContextType>({
   currentSrc: "",
   audioFile: null,
   prevSrc: "",
+  setWaveform: () => {},
+  waveform: null,
 });
 
 export const useAudio = () => {
@@ -31,6 +38,7 @@ const AudioWaveFormWrapper = ({ children }: PropsWithChildren<{}>) => {
   const [currentSrc, setCurrentSrc] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [prevSrc, setPrevSrc] = useState("");
+  const [waveform, setWaveform] = useState<Float32Array | null>(null);
 
   const audioRef = useRef(new Audio());
 
@@ -66,16 +74,29 @@ const AudioWaveFormWrapper = ({ children }: PropsWithChildren<{}>) => {
     };
   }, [audioRef, isPlaying]);
 
+  const providerValue = useMemo(
+    () => ({
+      playAudio,
+      isPlaying,
+      currentSrc,
+      audioFile: audioRef.current,
+      prevSrc,
+      setWaveform,
+      waveform,
+    }),
+    [
+      playAudio,
+      isPlaying,
+      currentSrc,
+      audioRef.current,
+      prevSrc,
+      setWaveform,
+      waveform,
+    ]
+  );
+
   return (
-    <AudioContext.Provider
-      value={{
-        playAudio,
-        isPlaying,
-        currentSrc,
-        audioFile: audioRef.current,
-        prevSrc,
-      }}
-    >
+    <AudioContext.Provider value={providerValue}>
       {children}
     </AudioContext.Provider>
   );

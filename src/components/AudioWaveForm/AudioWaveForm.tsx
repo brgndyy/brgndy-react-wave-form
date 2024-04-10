@@ -1,14 +1,11 @@
-import React, { useEffect, useRef, RefObject, useState } from "react";
+import React, { useEffect, useRef, RefObject } from "react";
 import WaveFormCanvas from "../WaveFormCanvas/WaveFormCanvas";
-import PlayOrPauseButton from "../PlayOrPauseButton/PlayOrPauseButton";
-import initializeWaveForm from "../../utils/initializeWaveForm";
 import drawWaveForm from "../../utils/drawWaveForm";
 import { useAudio } from "../Provider/AudioWaveFormWrapper";
 import drawInitializedWaveForm from "../../utils/drawInitializedWaveForm";
 
 type AudioWaveFormPropsType = {
   audioFileSrc: string;
-  buttonClassName?: string;
   waveFormClassName?: string;
   waveFormWidth?: number;
   waveFromHeight?: number;
@@ -16,12 +13,10 @@ type AudioWaveFormPropsType = {
   barGap?: number;
   baseBarHeight?: number;
   barVariability?: number;
-  playOrPause?: [string, string] | [React.ReactNode, React.ReactNode];
 };
 
 export default function AudioWaveForm({
   audioFileSrc,
-  buttonClassName,
   waveFormClassName,
   waveFormWidth,
   waveFromHeight,
@@ -29,9 +24,7 @@ export default function AudioWaveForm({
   barGap,
   baseBarHeight,
   barVariability,
-  playOrPause,
 }: AudioWaveFormPropsType) {
-  const classNameOfButton = buttonClassName ?? "";
   const classNameOfWaveForm = waveFormClassName ?? "";
 
   const widthOfWaveForm = waveFormWidth ?? 500;
@@ -42,12 +35,9 @@ export default function AudioWaveForm({
   const waveFormBaseBarHeight = baseBarHeight ?? 0.2;
   const waveFormBarVariability = barVariability ?? 0.6;
 
-  const playOrPauseValues = playOrPause ?? ["play", "pause"];
-
   const canvasRef: RefObject<HTMLCanvasElement> =
     useRef<HTMLCanvasElement>(null);
-  const { currentSrc, isPlaying, playAudio, audioFile, prevSrc } = useAudio();
-  const [waveform, setWaveform] = useState<Float32Array | null>(null);
+  const { currentSrc, isPlaying, audioFile, prevSrc, waveform } = useAudio();
 
   useEffect(() => {
     if (audioFile) {
@@ -111,15 +101,6 @@ export default function AudioWaveForm({
     drawInitialWaveForm();
   }, [prevSrc]);
 
-  const selectSongHandler = async (currentMusicSrc: string) => {
-    setWaveform(null);
-
-    playAudio(currentMusicSrc);
-
-    const initializedWaveForm = await initializeWaveForm(currentMusicSrc, 200);
-    setWaveform(initializedWaveForm);
-  };
-
   const clickCanvasProgressBarHandler = (
     event: React.MouseEvent<HTMLElement, MouseEvent>
   ) => {
@@ -138,21 +119,13 @@ export default function AudioWaveForm({
   };
 
   return (
-    <>
-      <PlayOrPauseButton
-        src={audioFileSrc}
-        selectSongHandler={selectSongHandler}
-        className={classNameOfButton}
-        playOrPauseValues={playOrPauseValues}
-      />
-      <WaveFormCanvas
-        canvasRef={canvasRef}
-        className={classNameOfWaveForm}
-        width={widthOfWaveForm}
-        height={heightOfWaveForm}
-        clickCanvasProgressBarHandler={clickCanvasProgressBarHandler}
-      />
-    </>
+    <WaveFormCanvas
+      canvasRef={canvasRef}
+      className={classNameOfWaveForm}
+      width={widthOfWaveForm}
+      height={heightOfWaveForm}
+      clickCanvasProgressBarHandler={clickCanvasProgressBarHandler}
+    />
   );
 }
 
