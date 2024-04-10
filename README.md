@@ -71,15 +71,6 @@ function App() {
 export default App;
 ```
 
-audioFileSrc: string;
-waveFormClassName?: string;
-waveFormWidth?: number;
-waveFromHeight?: number;
-barWidth?: number;
-barGap?: number;
-baseBarHeight?: number;
-barVariability?: number;
-
 ## AudioWaveForm Component Props
 
 | Name              | Datatype | Default | Description                                                                |
