@@ -5,7 +5,7 @@ type PlayOrPauseButtonProps = {
   src: string;
   selectSongHandler: (currentMusicSrc: string) => void;
   className: string;
-  playOrPauseValues: [string, string];
+  playOrPauseValues: [string, string] | [React.ReactNode, React.ReactNode];
 };
 
 export default function PlayOrPauseButton({

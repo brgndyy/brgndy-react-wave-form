@@ -16,7 +16,7 @@ type AudioWaveFormPropsType = {
   barGap?: number;
   baseBarHeight?: number;
   barVariability?: number;
-  playOrPause?: [string, string];
+  playOrPause?: [string, string] | [React.ReactNode, React.ReactNode];
 };
 
 export default function AudioWaveForm({
