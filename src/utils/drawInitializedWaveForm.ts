@@ -8,7 +8,12 @@ const drawInitializedWaveForm = async (
   waveFormBarWidth: number,
   waveFormBarGap: number,
   waveFormBaseBarHeight: number,
-  waveFormBarVariability: number
+  waveFormBarVariability: number,
+  currentTimePercent: number,
+  waveFormBackgroundTopColor: string,
+  waveFormBackgroundBottomColor: string,
+  waveFormBaTopColor: string,
+  waveFormBarBottomColor: string
 ) => {
   const initializedWaveForm = await initializeWaveForm(audioFileSrc, 200);
 
@@ -29,7 +34,11 @@ const drawInitializedWaveForm = async (
       waveFormBarGap,
       waveFormBaseBarHeight,
       waveFormBarVariability,
-      0
+      currentTimePercent,
+      waveFormBackgroundTopColor,
+      waveFormBackgroundBottomColor,
+      waveFormBaTopColor,
+      waveFormBarBottomColor
     );
   }
 };

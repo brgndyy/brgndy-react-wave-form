@@ -13,6 +13,10 @@ type AudioWaveFormPropsType = {
   barGap?: number;
   baseBarHeight?: number;
   barVariability?: number;
+  backgroundTopColor?: string;
+  backgroundBottomColor?: string;
+  barTopColor?: string;
+  barBottomColor?: string;
 };
 
 export default function AudioWaveForm({
@@ -24,6 +28,10 @@ export default function AudioWaveForm({
   barGap,
   baseBarHeight,
   barVariability,
+  backgroundTopColor,
+  backgroundBottomColor,
+  barTopColor,
+  barBottomColor,
 }: AudioWaveFormPropsType) {
   const classNameOfWaveForm = waveFormClassName ?? "";
 
@@ -34,6 +42,12 @@ export default function AudioWaveForm({
   const waveFormBarGap = barGap ?? 3;
   const waveFormBaseBarHeight = baseBarHeight ?? 0.2;
   const waveFormBarVariability = barVariability ?? 0.6;
+
+  const waveFormBackgroundTopColor = backgroundTopColor ?? "rgb(92, 92, 92)";
+  const waveFormBackgroundBottomColor =
+    backgroundBottomColor ?? "rgba(0, 128, 255, 0.7)";
+  const waveFormBaTopColor = barTopColor ?? "rgb(0, 128, 255)";
+  const waveFormBarBottomColor = barBottomColor ?? "rgba(92, 92, 92, 0.7)";
 
   const canvasRef: RefObject<HTMLCanvasElement> =
     useRef<HTMLCanvasElement>(null);
@@ -61,7 +75,11 @@ export default function AudioWaveForm({
             waveFormBarGap,
             waveFormBaseBarHeight,
             waveFormBarVariability,
-            currentTimePercent
+            currentTimePercent,
+            waveFormBackgroundTopColor,
+            waveFormBackgroundBottomColor,
+            waveFormBaTopColor,
+            waveFormBarBottomColor
           );
         }
       };
@@ -72,7 +90,12 @@ export default function AudioWaveForm({
           waveFormBarWidth,
           waveFormBarGap,
           waveFormBaseBarHeight,
-          waveFormBarVariability
+          waveFormBarVariability,
+          0,
+          waveFormBackgroundTopColor,
+          waveFormBackgroundBottomColor,
+          waveFormBaTopColor,
+          waveFormBarBottomColor
         );
       };
 
@@ -94,7 +117,12 @@ export default function AudioWaveForm({
         waveFormBarWidth,
         waveFormBarGap,
         waveFormBaseBarHeight,
-        waveFormBarVariability
+        waveFormBarVariability,
+        0,
+        waveFormBackgroundTopColor,
+        waveFormBackgroundBottomColor,
+        waveFormBaTopColor,
+        waveFormBarBottomColor
       );
     };
 
