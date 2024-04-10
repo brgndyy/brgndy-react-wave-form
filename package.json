@@ -1,5 +1,5 @@
 {
-  "name": "react-wave-form",
+  "name": "brgndy-react-wave-form",
   "version": "1.0.0",
   "description": "react audio waveform library like soundcloud",
   "main": "dist/cjs/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brgndyy/react-wave-form.git"
+    "url": "git+https://github.com/brgndyy/brgndy-react-wave-form"
   },
   "keywords": [
     "wave-form",
@@ -26,10 +26,10 @@
     "url": "https://github.com/brgndyy"
   },
   "bugs": {
-    "url": "https://github.com/brgndyy/react-wave-form/issues"
+    "url": "https://github.com/brgndyy/brgndy-react-wave-form/issues"
   },
   "license": "MIT",
-  "homepage": "https://github.com/brgndyy/react-wave-form#readme",
+  "homepage": "https://github.com/brgndyy/brgndy-react-wave-form#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
