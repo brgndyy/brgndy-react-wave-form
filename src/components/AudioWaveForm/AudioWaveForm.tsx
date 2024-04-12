@@ -3,6 +3,7 @@ import WaveFormCanvas from "../WaveFormCanvas/WaveFormCanvas";
 import drawWaveForm from "../../utils/drawWaveForm";
 import { useAudio } from "../Provider/AudioWaveFormWrapper";
 import drawInitializedWaveForm from "../../utils/drawInitializedWaveForm";
+import { createWaveFormDrawer } from "../../utils/createWaveFormDraw";
 
 type AudioWaveFormPropsType = {
   audioFileSrc: string;
@@ -66,21 +67,26 @@ export default function AudioWaveForm({
           const WIDTH = canvas.width;
           const HEIGHT = canvas.height;
           const currentTimePercent = audioFile.currentTime / audioFile.duration;
-          drawWaveForm(
-            canvasCtx,
-            waveform,
-            WIDTH,
-            HEIGHT,
-            waveFormBarWidth,
-            waveFormBarGap,
-            waveFormBaseBarHeight,
-            waveFormBarVariability,
-            currentTimePercent,
+
+          const customDrawWaveForm = createWaveFormDrawer({
+            barWidth: waveFormBarWidth,
+            gap: waveFormBarGap,
+            baseHeightRatio: waveFormBaseBarHeight,
+            variability: waveFormBarVariability,
             waveFormBackgroundTopColor,
             waveFormBackgroundBottomColor,
             waveFormBaTopColor,
-            waveFormBarBottomColor
-          );
+            waveFormBarBottomColor,
+          });
+          if (canvasCtx) {
+            customDrawWaveForm(
+              canvasCtx,
+              waveform,
+              WIDTH,
+              HEIGHT,
+              currentTimePercent
+            );
+          }
         }
       };
       const handleAudioEnded = async () => {
