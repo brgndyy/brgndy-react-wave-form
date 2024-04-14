@@ -8,10 +8,10 @@ const drawWaveForm = (
   baseHeightRatio: number, // 막대 기본 높이
   variability: number, // 막대 높낮이 차이
   currentTimePercent: number, // 현재 재생 위치의 퍼센트
-  waveFormBackgroundTopColor: string,
-  waveFormBackgroundBottomColor: string,
-  waveFormBaTopColor: string,
-  waveFormBarBottomColor: string
+  waveFormBackgroundTopColor: string, // 캔버스 위쪽의 배경 색상
+  waveFormBackgroundBottomColor: string, // 캔버스 아래쪽 배경 색상
+  waveFormBarTopColor: string, // 캔버스 막대 위쪽 색상
+  waveFormBarBottomColor: string // 캔버스 막대 아래쪽 색상
 ) => {
   if (waveform && canvasCtx) {
     canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -30,7 +30,7 @@ const drawWaveForm = (
 
       // 현재 재생 위치보다 왼쪽에 있는 막대의 색상을 변경
       if (x < currentX) {
-        canvasCtx.fillStyle = waveFormBaTopColor; // 재생된 부분의 색상
+        canvasCtx.fillStyle = waveFormBarTopColor; // 재생된 부분의 색상
       } else {
         canvasCtx.fillStyle = waveFormBackgroundTopColor; // 아직 재생되지 않은 부분의 색상
       }
