@@ -14,7 +14,8 @@
     "outDir": "dist",
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "traceResolution": true
   },
-  "types": ["vitest/globals"]
+  "types": ["vitest/globals", "@vitest/spy"]
 }
