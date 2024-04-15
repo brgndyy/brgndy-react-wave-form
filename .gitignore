@@ -131,3 +131,4 @@ dist
 
 dist
 .rollup.cache
+*storybook.log
